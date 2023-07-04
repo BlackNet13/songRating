@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">songRating</string>
+    <string-array name="options">
+        <item>SHOW LIST</item>
+        <item>Title[ASC]</item>
+        <item>Title[DESC]</item>
+        <item>Singers[ASC]</item>
+        <item>Singers[DESC]</item>
+        <item>Year[ASC]</item>
+        <item>Year[DESC]</item>
+        <item>Stars[ASC]</item>
+        <item>Stars[DESC]</item>
+    </string-array>
+</resources>
