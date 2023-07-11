@@ -19,15 +19,15 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
 
-    Button btnInsert;
-    ListView lvResults;
+    Button btnInsert, btnShowList;
+    //ListView lvResults;
     EditText ed1, ed2, ed3;
-    Spinner ddSpn;
+    //Spinner ddSpn;
     RadioGroup rdGrp;
 
-    //ArrayList<String> strList;
+    ArrayList<String> strList;
 
-    boolean asc, asc1, asc2, asc3, asc4 = true;
+    //boolean asc, asc1, asc2, asc3, asc4 = true;
 
     int rating = 0;
 
@@ -37,8 +37,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         btnInsert = findViewById(R.id.btnInsert);
-        ddSpn = findViewById(R.id.spinner);
-        lvResults = findViewById(R.id.lv);
+        btnShowList = findViewById(R.id.btnShowList);
+
+        //ddSpn = findViewById(R.id.spinner);
+        //lvResults = findViewById(R.id.lv);
 
         ed1 = findViewById(R.id.ed1);
         ed2 = findViewById(R.id.ed2);
@@ -73,16 +75,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        ddSpn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        btnShowList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DBHelper db = new DBHelper(MainActivity.this);
+                //ArrayList<String> data = db.getSongContent();
+                //intent.putExtra("data",data);
+                startActivity(intent);
+            }
+        });
+
+        /*ddSpn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 //DBHelper db = new DBHelper(MainActivity.this);
                 boolean swP = true;
                 switch (position){
-                    /*case 0:
-                        asc = true;
-                        swP = asc;
-                        break;*/
                     case 1:
                         asc1 = true;
                         swP = asc1;
@@ -123,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
 
-                /*ArrayList<Song> data = db.getSongs(position,swP);
+                ArrayList<Song> data = db.getSongs(position,swP);
                 strList = new ArrayList<String>();
                 ArrayAdapter listStr = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1,strList);
                 lvResults.setAdapter(listStr);
@@ -132,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
                 for(int i = 0; i <data.size(); i++){
                     listStr.add(data.get(i));
                     listStr.notifyDataSetChanged();
-                }*/
+                }
 
 
             }
@@ -141,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
-        });
+        });*/
 
 
 
