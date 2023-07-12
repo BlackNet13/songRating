@@ -52,32 +52,44 @@ public class MainActivity3 extends AppCompatActivity {
         switch(stars){
             case 1:
                 rdGrp.check(R.id.radio1);
-                stars = 1;
                 break;
             case 2:
                 rdGrp.check(R.id.radio2);
-                stars = 2;
                 break;
             case 3:
                 rdGrp.check(R.id.radio3);
-                stars = 3;
                 break;
             case 4:
                 rdGrp.check(R.id.radio4);
-                stars = 4;
                 break;
             case 5:
                 rdGrp.check(R.id.radio5);
-                stars = 5;
                 break;
         }
 
-        int finalStars = stars;
+        rdGrp.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if(checkedId == R.id.radio1){
+                    rating = 1;
+                }else if(checkedId == R.id.radio2){
+                    rating = 2;
+                }else if(checkedId == R.id.radio3){
+                    rating = 3;
+                }else if(checkedId == R.id.radio4){
+                    rating = 4;
+                } else if (checkedId == R.id.radio5) {
+                    rating = 5;
+                }
+            }
+        });
+
+
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DBHelper dbh = new DBHelper(MainActivity3.this);
-                data.setSong(ed1.getText().toString(),ed2.getText().toString(), Integer.parseInt(ed3.getText().toString()), finalStars);
+                data.setSong(ed1.getText().toString(),ed2.getText().toString(), Integer.parseInt(ed3.getText().toString()), rating);
                 dbh.updateSong(data);
                 dbh.close();
                 finish();
